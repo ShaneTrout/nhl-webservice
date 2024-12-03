@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roster Upload</title>
+</head>
+<body>
+
+
+<h2>Favorite players list</h2>
+
+
+    <input firstName="text" name="firstName" placeholder="Enter text here">
+    <button firstName="submit" onclick="uploadFile()"> Submit</button>
+
+
+<script>
+    async function uploadFile() {
+        let formData = new FormData();
+        formData.append("data", fileupload.files[0]);
+        await fetch('http://localhost:8080/roster', {
+            method: "POST",
+            body: formData
+        }).then(result =>    result.text())
+            .then(text => alert(text));
+    }
+</script>
+</body>
+</html>
